@@ -3,8 +3,15 @@ body {
 }
 
 input {
-margin-right: 3px; 
-width: 20px; 
-text-align: center;
+    margin-right: 1px; 
+    width: 40px; 
+    height: 40px;
+    text-align: center;
+    font-size: 25pt;
 }
+
+input.pinkBoard {
+    background-color: rgb(255, 228, 228);
+}
+
 
