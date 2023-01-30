@@ -7,12 +7,12 @@ form.addEventListener("submit", (e) => { // id"form" 내부 다 가져옴.
     e.preventDefault();
     formValidation();
   });
-  
   // 유효성검사 가볍게 하기
 let formValidation = () => { 
     textInput.value === "" || textarea.value === "" ?
     contentMsg.innerHTML = "제목 또는 내용 없음" : dataInLocal();
 };
+
 
 let localData = [];
 let dataInLocal = () => { // 로컬에 데이터 넣기
@@ -35,7 +35,8 @@ let createContentList = () => { // 로컬데이터 html 넣기
                 <p>${el.description}</p>
                 <button type="submit" id="delete" onclick="deleteContentList(this)">삭제하기</button>
               </div>
-            `);
+            `
+            );
           });
     resetForm();
   };
@@ -52,13 +53,20 @@ let createContentList = () => { // 로컬데이터 html 넣기
     e.parentElement.remove();
     localData.splice(e.parentElement.id, 1);  // 스플라이스로 지우고, 
     localStorage.setItem("localDataKey", JSON.stringify(localData));  // 로컬에 스트링으로 셋.
-
+    createContentList();
   };
+  
+  let delAllLocalStorage = () => {
+    localData.splice(0, localData.length);
+    localStorage.setItem("localDataKey", JSON.stringify(localData));
+    createContentList();
+  }
 // 로컬 가져옴.
   (() => {
     localData = JSON.parse(localStorage.getItem("localDataKey")) || []; // json형식으로 겟.
     createContentList();
   })();
 
-  // 삭제누르면 일부가 로컬에서 삭제되지 않고 남아있는지 현상 잡기.
-  // 콘솔에서 직접 삭제하기버튼 누른 상황 만들어서 확인해야 할 듯...ㅠㅠ
+  // 추후 리액트 적용, 다른기능 적용
+
+

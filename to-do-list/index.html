@@ -11,15 +11,19 @@
   <div class="app">
     <h2 class="">ToDoList</h2>
     <h4>게시물</h5>
+    <div id="delAllLocalStorage">
+      <!-- 삭제버튼 넣기 -->
+      <button id="delAllButton" onclick="delAllLocalStorage()">전체삭제</button>
+    </div>
     <div id="contentList">
-        <!-- 
-        추가 할 값을 여기에
-        <div id="1">
-        <span>제목</span>
-        <span>날짜</span>
-        <p>내용</p>
-        </div> 
-        -->
+      <!-- 
+        <div id="${index}">
+          <p>${index+1}.제목 : ${el.text}</p>
+          <span>${el.date}</span>
+          <p>${el.description}</p>
+          <button type="submit" id="delete" onclick="deleteContentList(this)">삭제하기</button>
+        </div>
+      -->
     </div>
 
     <form id="form">
@@ -39,6 +43,7 @@
       </div>
     </div>
     </form>
+
   </div>
 <script src="/solo/to-do-list/main.js"></script>
 </body>

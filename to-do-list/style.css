@@ -1,7 +1,6 @@
   body {
     margin: 0 50px;
     background-color: #e5e5e5;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +29,7 @@
     background-color: #9ea7a0;
     border-radius: 6px;
   }
+
 
 
 
