@@ -33,6 +33,10 @@ let localMap = () => {  // 호출 한 함수에 따라 맵.
         `
 )})};
 
+let callCenter = (x, y) => {  // 함수인자 실행
+  x(), y();
+}
+
 let localSetData = () =>{ // 로컬에 데이터 넣기
   localStorage.setItem("localDataKey", JSON.stringify(localData));
 }
@@ -43,26 +47,22 @@ let dataInLocal = () => { // data넣기
     date: new Date().toLocaleString('kr'),
     description: toDoContent.value,
   });
-  localSetData();
-  createContentList();
+  callCenter(localSetData, createContentList);
 };
 
 let deleteContentList = (e) => {  // 삭제하기
   e.parentElement.remove();
   localData.splice(e.parentElement.id, 1);  
-  localSetData();
-  localMap();
+  callCenter(localSetData, localMap);
 };
 
 let delAllLocalStorage = () => {  // 전체삭제
   localData.splice(0, localData.length);
-  localSetData();
-  localMap();
+  callCenter(localSetData, localMap);
 }
 
 let createContentList = () => { // 추가하기
-  localMap();
-  resetForm();
+  callCenter(localMap, resetForm);
 };
 
 localData = JSON.parse(localStorage.getItem("localDataKey")) || []; // 바로 return
