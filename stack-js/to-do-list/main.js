@@ -1,73 +1,75 @@
 let form = document.getElementById("form");
-let textInput = document.getElementById("textInput");
+let titleInput = document.getElementById("textInput");
 let toDoContent = document.getElementById("toDoContent");
 let contentList = document.getElementById("contentList");
-let localData = []
+let localData = JSON.parse(localStorage.getItem("localDataKey")) || [];
 
-form.addEventListener("submit", (e) => { // id"form" 내부 다 가져옴.
+/** 유효성검사 */
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  formValidation();
+  titleInput.value === "" || toDoContent.value === "" ?
+  contentMsg.innerHTML = "제목 또는 내용 없음" : dataInLocal();
 });
 
-let formValidation = () => {  // 내용 없으면 알림.
-  textInput.value === "" || toDoContent.value === "" ?
-  contentMsg.innerHTML = "제목 또는 내용 없음" : dataInLocal();
-};
-
-let resetForm = () => { // 작성 후 입력 비우기
-  textInput.value = "";
+/** 입력값 초기화 */
+let resetForm = () => { 
+  titleInput.value = "";
   toDoContent.value = "";
   contentMsg.innerHTML ="";
 };
 
-let localMap = () => {  // 호출 한 함수에 따라 맵.
+let localMap = () => {
   contentList.innerHTML = "";
     localData.map((el, index) => {
       return (contentList.innerHTML += `
         <div id="${index}">
-          <p>${index+1}.제목 : ${el.text}</p>
+          <p>${index+1}.제목 : ${el.title}</p>
           <span>${el.date}</span>
-          <p>${el.description}</p>
+          <p>${el.content}</p>
           <button type="submit" id="delete" onclick="deleteContentList(this)">삭제하기</button>
         </div>
         `
 )})};
 
-let callCenter = (x, y) => {  // 함수인자 실행
+/** 함수실행 */
+let callCenter = (x, y) => {
   x(), y();
 }
 
-let localSetData = () =>{ // 로컬에 데이터 넣기
+/** 로컬에 데이터 넣기 */
+let localSetData = () =>{
   localStorage.setItem("localDataKey", JSON.stringify(localData));
 }
 
-let dataInLocal = () => { // data넣기
+/** 데이터 넣기 */
+let dataInLocal = () => {
   localData.unshift({
-    text: textInput.value,
+    title: titleInput.value,
     date: new Date().toLocaleString('kr'),
-    description: toDoContent.value,
+    content: toDoContent.value,
   });
   callCenter(localSetData, createContentList);
 };
 
-let deleteContentList = (e) => {  // 삭제하기
+/** 해당 게시글 삭제 */
+let deleteContentList = (e) => {
   e.parentElement.remove();
   localData.splice(e.parentElement.id, 1);  
   callCenter(localSetData, localMap);
 };
 
-let delAllLocalStorage = () => {  // 전체삭제
+/** 게시글 전체삭제 */
+let delAllLocalStorage = () => {  
   localData.splice(0, localData.length);
   callCenter(localSetData, localMap);
 }
 
-let createContentList = () => { // 추가하기
+/** 리스트에 추가하기 */ 
+let createContentList = () => { 
   callCenter(localMap, resetForm);
 };
 
-localData = JSON.parse(localStorage.getItem("localDataKey")) || []; // 바로 return
 localMap(); // 필드실행.
-
 
   // 추가 할 기능 생각해보기
   // 함수 기능별로 쪼개기
