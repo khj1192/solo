@@ -1,6 +1,11 @@
 let dummyTest = dummy;
-console.log([...dummyTest]);
 let dummyList = document.querySelector(".dummy-list");
+
+let developerPosition = document.getElementById("developerPosition");
+let form = document.getElementById("form");
+let textName = document.getElementById("textName");
+let skillStack = document.getElementById("skillStack");
+let localData = JSON.parse(localStorage.getItem("developerGroup")) || [];
 
 // 일단 리스트 뿌림.
 dummyList.innerHTML = dummyTest.map((el) => {
@@ -17,20 +22,28 @@ dummyList.innerHTML = dummyTest.map((el) => {
     )
 }).join('');
 
-{/* <article class="categories">
-<button class="btn">전체</button>
-<button class="btn">프론트</button>
-<button class="btn">백</button>
-<button class="btn">풀스택</button>
-</article> */}
-
-let btn = document.querySelectorAll(".btn");
-let listOut = () => {
-    // (btn[0].value === 'all') 전체출력()
-    // (btn[0].value === 'all') 전체출력()
-    // (btn[0].value === 'all') 전체출력()
-    // (btn[0].value === 'all') 전체출력()
+// 등록버튼 클릭시 실행
+let localBoxFunction = () =>{
+    console.log(textName.value)
+    localData.push(textName.value = "확인")
+    localStorage.setItem("developerGroup", JSON.stringify(localData))
 }
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("버튼 잘 눌려서 들어갑니다~");
+    localBoxFunction();
+  });
+
+
+
+
+
+
+
+
+// 필터링.
+let btn = document.querySelectorAll(".btn");
+
 btn[0].addEventListener("click", () =>{
     dummyList.innerHTML = dummyTest.map(el =>{
         const {id, name, imgUrl, techStack} = el;
@@ -48,7 +61,7 @@ btn[0].addEventListener("click", () =>{
 });
 btn[1].addEventListener("click", () =>{
     dummyList.innerHTML = dummyTest.filter((el) => {
-        if(el.tech === 'front'){ return el }
+        if(el.tech === 'front' || el.tech === 'back'){ return el }
     }).map(el =>{
         const {id, name, imgUrl, techStack} = el;
         return (
@@ -95,23 +108,9 @@ btn[3].addEventListener("click", () =>{
             </div>
             `
         )
-    });
+    })
 });
 
-
-
-// if(tech === 'front')
-// if(tech === 'back')
-// return (
-//     `
-//     <div>
-//     <img src="${imgUrl}" />
-//     <span>아이디:${id}</span>
-//     <span>이름:${name}</span><br>
-//     <span>기술스택:${techStack}</span>
-//     </div>
-//     `
-// )
 
 
 

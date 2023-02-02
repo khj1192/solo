@@ -10,12 +10,30 @@
 <body>
     <main>
         <section class="dummy">
+            <div>1. 등록기능 - 백,풀,프론트 추적(추천기능?)</div>
+            <div>2. 문자검색 - 기술, 이름 키워드 등등</div>
+            <div>3. 정렬 - 기술키워드, 영역별 정렬, 경력?</div>
+            <div>4. 클릭시 - 자기소개정도</div>
+            <div>5. 로컬등록</div>
+            <form id="form">
+                <div>
+                  <div>
+                      이름<input type="text" id="textName" />
+                    <div id="developerPosition">
+                        <input type="checkbox" value="front">프론트엔드
+                        <input type="checkbox" value="back">백엔드
+                        <input type="checkbox" value="full">풀스택
+                    </div>
+                      <p>가능기술</p>
+                      <textarea cols="40" rows="5" id="skillStack">textarea말고, 한칸씩 작성하는 방식으로.
+                      </textarea>
+                    </div>
+                    <div>
+                      <button type="submit" id="add">등록</button>
+                    </div>
+                </div>
+            </form>
             <div class="searcg-and-categories">
-                <div>1. 등록기능 - 백,풀,프론트 추적(추천기능?)</div>
-                <div>2. 문자검색 - 기술, 이름 키워드 등등</div>
-                <div>3. 정렬 - 기술키워드, 영역별 정렬, 경력?</div>
-                <div>4. 클릭시 - 자기소개정도</div>
-                <div>5. 로컬등록</div>
                 <form>
                     <input type="text" class="search" placeholder="검색태그">
                 </form>
@@ -31,6 +49,10 @@
                     <!-- <div>아이디:${el.id}, 이름:${el.name}</div> -->
                 </article>
             </div>
+            <br>
+            <br>
+            <br>
+            <div>길어지면 페이징처리</div>
 
         </section>
     </main>

@@ -52,7 +52,7 @@ let localData = JSON.parse(localStorage.getItem("localDataKey")) || [];
       callCenter(localDataSet, localMap);
     };
 /** 게시글 전체삭제 */
-    let delAllLocalStorage = () => {  
+    let delAllLocalStorage = () => {
       localData.splice(0, localData.length);
       callCenter(localDataSet, localMap);
     }
