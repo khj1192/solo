@@ -7,24 +7,6 @@ let textName = document.getElementById("textName");
 let skillStack = document.getElementById("skillStack");
 let localData = JSON.parse(localStorage.getItem("developerGroup")) || [];
 
-// 일단 리스트 뿌림.
-const displayProducts = () => {
-dummyList.innerHTML = dummyTest.map((el) => {
-    const {id, name, imgUrl, techStack} = el;  // el.id, el.name
-    return (
-        `
-        <div>
-        <img src="${imgUrl}" />
-        <span>아이디:${id}</span>
-        <span>이름:${name}</span><br>
-        <span>기술스택:${techStack}</span>
-        </div>
-        `
-    )
-}).join('');
-}
-displayProducts();
-
 // 등록버튼 클릭시 실행
 let localBoxFunction = () =>{
     console.log(textName.value)
@@ -37,12 +19,59 @@ form.addEventListener("submit", (e) => {
     localBoxFunction();
   });
 
+let testFunction = (el) => {
+    return (
+        `
+        <div>
+        <img src="${el.imgUrl}" />
+        <span>아이디:${el.id}</span>
+        <span>이름:${el.name}</span><br>
+        <span>기술스택:${el.techStack}</span>
+        </div>
+        `
+    )
+}
 
+// 일단 리스트 뿌림.
+const displayProducts = () => {
+dummyList.innerHTML = dummyTest.map((el) => {
+    return testFunction(el);
+});
+}
+displayProducts();
 
+// 필터링.
+let btn = document.querySelectorAll(".btn");
 
+btn[0].addEventListener("click", () =>{
+    dummyList.innerHTML = dummyTest.map(el =>{
+        return testFunction(el);
+    });
+});
 
+btn[1].addEventListener("click", () =>{
+    dummyList.innerHTML = dummyTest.filter((el) => {
+        if(el.tech === 'front' || el.tech === 'back'){ return el }
+    }).map(el =>{
+        return testFunction(el);
+    });
+});
 
+btn[2].addEventListener("click", () =>{
+    dummyList.innerHTML = dummyTest.filter((el) => {
+        if(el.tech === 'back'){ return el }
+    }).map(el =>{
+        return testFunction(el);
+    });
+});
 
+btn[3].addEventListener("click", () =>{
+    dummyList.innerHTML = dummyTest.filter((el) => {
+        if(el.tech === 'full'){ return el }
+    }).map(el =>{
+        return testFunction(el);
+    });
+});
 
 // 검색태그
 const formInput = document.querySelector('.input-form');
@@ -55,80 +84,6 @@ formInput.addEventListener('keyup', () => {
     });
     displayProducts();
   });
-
-
-
-
-
-// 필터링.
-let btn = document.querySelectorAll(".btn");
-
-btn[0].addEventListener("click", () =>{
-    dummyList.innerHTML = dummyTest.map(el =>{
-        const {id, name, imgUrl, techStack} = el;
-        return (
-            `
-            <div>
-            <img src="${imgUrl}" />
-            <span>아이디:${id}</span>
-            <span>이름:${name}</span><br>
-            <span>기술스택:${techStack}</span>
-            </div>
-            `
-        )
-    });
-});
-btn[1].addEventListener("click", () =>{
-    dummyList.innerHTML = dummyTest.filter((el) => {
-        if(el.tech === 'front' || el.tech === 'back'){ return el }
-    }).map(el =>{
-        const {id, name, imgUrl, techStack} = el;
-        return (
-            `
-            <div>
-            <img src="${imgUrl}" />
-            <span>아이디:${id}</span>
-            <span>이름:${name}</span><br>
-            <span>기술스택:${techStack}</span>
-            </div>
-            `
-        )
-    });
-});
-btn[2].addEventListener("click", () =>{
-    dummyList.innerHTML = dummyTest.filter((el) => {
-        if(el.tech === 'back'){ return el }
-    }).map(el =>{
-        const {id, name, imgUrl, techStack} = el;
-        return (
-            `
-            <div>
-            <img src="${imgUrl}" />
-            <span>아이디:${id}</span>
-            <span>이름:${name}</span><br>
-            <span>기술스택:${techStack}</span>
-            </div>
-            `
-        )
-    });
-});
-btn[3].addEventListener("click", () =>{
-    dummyList.innerHTML = dummyTest.filter((el) => {
-        if(el.tech === 'full'){ return el }
-    }).map(el =>{
-        const {id, name, imgUrl, techStack} = el;
-        return (
-            `
-            <div>
-            <img src="${imgUrl}" />
-            <span>아이디:${id}</span>
-            <span>이름:${name}</span><br>
-            <span>기술스택:${techStack}</span>
-            </div>
-            `
-        )
-    })
-});
 
 
 
