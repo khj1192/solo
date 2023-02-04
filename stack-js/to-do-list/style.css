@@ -25,7 +25,7 @@
     border-radius: 10px;
   }
 
-  #toDoContent, #textInput, #add, #delete, #delAllButton{
+  #toDoContent, #titleInput, #add, #delete, #delAllButton{
     border: 3px solid #abcea1;
     background-color: #9ea7a0;
     border-radius: 10px;
