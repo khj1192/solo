@@ -9,11 +9,9 @@
 </head>
 <body>
   <div class="app">
-    <h2 class="">ToDoList</h2>
-    <h4>게시물</h5>
-      <span id="delAllLocalStorage">
-        <!-- 삭제버튼 넣기 -->
-        <button id="delAllButton" onclick="delAllLocalStorage()">전체삭제</button>
+    <h2>ToDo List</h2>
+    <span id="delAllLocalStorage">
+        <button id="delAllButton">게시물 전체삭제</button>
       </span>
     <form id="form">
     <div>
@@ -24,20 +22,12 @@
         <textarea cols="40" rows="5" id="toDoContent"></textarea>
       </div>
       <div>
-        <button type="submit" id="add">추가하기</button>
-        <sapn id="contentMsg"></span>
+        <button type="submit" id="add">추가</button>
       </div>
+      <sapn id="contentMsg"></span>
     </div>
     </form>
     <div id="contentList">
-      <!-- 
-        <div id="${index}">
-          <p>${index+1}.제목 : ${el.title}</p>
-          <span>${el.date}</span>
-          <p>${el.content}</p>
-          <button type="submit" id="delete" onclick="deleteContentList(this)">삭제하기</button>
-        </div>
-      -->
     </div>
   </div>
 <script src="./main.js"></script>

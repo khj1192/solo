@@ -8,7 +8,7 @@ let localData = JSON.parse(localStorage.getItem("localDataKey")) || [];
 /** 유효성검사 */
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      titleInput.value === "" || toDoContent.value === "" ?
+      !titleInput.value || !toDoContent.value ?
       contentMsg.innerHTML = "제목 또는 내용 없음" : storeData();
     });
 /** 입력값 초기화 */
@@ -26,7 +26,7 @@ let localData = JSON.parse(localStorage.getItem("localDataKey")) || [];
             <p>${index + 1}. Title: ${el.title}</p>
             <span>${el.date}</span>
             <p>${el.content}</p>
-            <button type="submit" id="delete" onclick="deleteData(event, ${index})">Delete</button>
+            <button type="submit" id="delete" onclick="deleteData(event, ${index})">삭제</button>
           </div>
         `;
       });
@@ -48,6 +48,7 @@ let localData = JSON.parse(localStorage.getItem("localDataKey")) || [];
     };
 /** 해당 게시글 삭제 */
     const deleteData = (event, index) => {
+      console.log(event.target)
       event.target.parentElement.remove();
       localData.splice(index, 1);
       localDataSet();
