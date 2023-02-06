@@ -51,9 +51,131 @@
             <br>
             <br>
             <div>길어지면 페이징처리</div>
+            <button class="pagination">qjxms</button>
         </section>
     </main>
     <script src="./dummy.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
+
+
+
+
+<!-- 
+        <section class="dummy">
+            <form id="form">
+                    <div>
+                      이름<input type="text" id="textName" />
+                    <div id="developerPosition">
+                        <input id="front" type="checkbox" value="front">프론트엔드
+                        <input id="back" type="checkbox" value="back">백엔드
+                        <input id="full" type="checkbox" value="full">풀스택
+                    </div>
+                      <p>가능기술</p>
+                      <textarea cols="40" rows="5" id="skillStack"></textarea>
+                    </div>
+                    <div>
+                      <button type="submit" id="add">등록</button>
+                    </div>
+            </form>
+            <div class="searcg-and-categories">
+                <form class="input-form">
+                    <input type="text" class="search" placeholder="검색태그">
+                </form>
+                <article class="categories">
+                    <button class="btn" value="all">전체</button>
+                    <button class="btn" value="front">프론트</button>
+                    <button class="btn" value="back">백</button>
+                    <button class="btn" value="full">풀스택</button>
+                </article>
+            </div>
+            <div class="dummy-list-container">
+                <article class="dummy-list">
+                </article>
+            </div>
+        </section>
+<script src="./app.js">
+    let dummyList = document.querySelector(".dummy-list");
+    let form = document.getElementById("form");
+    let textName = document.getElementById("textName");
+    let skillStack = document.getElementById("skillStack");
+    let localData = JSON.parse(localStorage.getItem("developerGroup")) || [];
+    const addLocalStorage = (() => {
+        if(!localStorage.developerGroup) {
+            localStorage.setItem('developerGroup', JSON.stringify(dummy));
+        }
+    })();
+    document.querySelector('.pagination').addEventListener("click", (e) => {
+    if (e.target.classList.contains('page-button')) {
+        displayData(null, e.target.value);
+    }
+});
+
+    let addDeveloper = () => {
+        let tech = "";
+        if (front.checked) tech += front.value
+        if (back.checked) tech += back.value
+        if (full.checked) tech += full.value
+        console.log("tech : ",tech)
+        localData.push({
+            id: localData.length + 1,
+            name: textName.value, 
+            imgUrl: `https://avatars.githubusercontent.com/u/${parseInt(Math.random() * 100)}`,
+            techStack: skillStack.value,
+            tech: tech,
+        });
+        localStorage.setItem("developerGroup", JSON.stringify(localData));
+    };
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        addDeveloper();
+    });
+
+    let itemsPerPage = 10;
+    const displayData = (tech = 'all', currentPage = 1) => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    dummyList.innerHTML = localData
+    .filter((el) => tech === 'all' || el.tech === tech)
+    .slice(startIndex, endIndex)
+    .map(el => `
+        <div>
+        <img src="${el.imgUrl}" />
+        <span>ID: ${el.id}</span>
+        <span>Name: ${el.name}</span>
+        <span>Tech Stack: ${el.techStack}</span>
+        </div>
+        `)
+    .join('');
+};
+const renderPagination = (tech = 'all', currentPage = 1) => {
+    const totalPages = Math.ceil(localData.filter((el) => tech === 'all' || el.tech === tech).length / itemsPerPage);
+    let pagination = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        pagination += `<button class="page-button" value="${i}">${i}</button>`;
+    }
+
+    document.querySelector('.pagination').innerHTML = pagination;
+};
+    displayData();
+    renderPagination();
+
+    const btn = document.querySelector(".categories");
+        btn.addEventListener("click", (e)=>{
+            let tech = e.target.value;
+            console.log(tech)
+            displayData(tech);
+        });
+
+    const formInput = document.querySelector('.input-form');
+    const searchInput = document.querySelector(".search");
+    formInput.addEventListener('keyup', () => {
+        const inputValue = searchInput.value.toLowerCase();
+        localData = localData.filter(el => el.techStack.toLowerCase().includes(inputValue));
+        displayData();
+    });
+</script> -->
