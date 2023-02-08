@@ -13,10 +13,9 @@ const addLocalStorage = (() => {
 
 let addDeveloper = () => {
     let tech = "";
-    if (front.checked) tech += front.value
-    if (back.checked) tech += back.value
-    if (full.checked) tech += full.value
-    console.log("tech : ",tech)
+    if (front.checked) tech += front.value;
+    if (back.checked) tech += back.value;
+    if (full.checked) tech += full.value;
     localData.push({
         id: localData.length + 1,
         name: textName.value, 
@@ -30,7 +29,7 @@ let inputReset = () => {
   search.value = '';
   textName.value = '';
   skillStack.value = '';
-}
+};
 
 // 등록버튼 클릭시 실행
 form.addEventListener("submit", (e) => {
@@ -85,7 +84,6 @@ const changePage = (page) => {
 const btn = document.querySelector(".categories");
     btn.addEventListener("click", (e)=>{
         let tech = e.target.value;
-        console.log(tech)
         displayData(tech);
     });
 
