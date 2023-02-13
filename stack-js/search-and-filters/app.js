@@ -87,19 +87,11 @@ const btn = document.querySelector(".categories");
         displayData(tech);
     });
 
-// const formInput = document.querySelector('.input-form');
-// const searchInput = document.querySelector(".search");
-//////////////////검색 다시만들기
-
-////////////////////페이징//////////////////////
-// 문제1. 버튼 눌러야 작동
-// 문제2. 어느 카테고리로 가도 전체 페이지 수 가져옴.
-
-
-
-
-
-  // 구조정렬하기
+    // 수정 기능: 등록된 개발자의 정보를 수정할 수 있는 기능
+    // 삭제 기능: 등록된 개발자의 정보를 삭제할 수 있는 기능
+    // 정렬 기능: 등록된 개발자의 정보를 정렬할 수 있는 기능
+    // 페이지 번호 보여주기: 현재 보여지는 페이지 번호를 화면에 보여주는 기능
+    // 검색 기능 개선
 
 
 
