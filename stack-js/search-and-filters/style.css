@@ -1,4 +1,111 @@
-img {
-    width: 100px;
-    height: 100px;
-}
+/* 전체 페이지 배경 색상과 폰트 패밀리를 지정합니다. */
+body {
+    background-color: #E4F2FA;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 콘텐츠가 들어가는 영역의 최대 너비와 가운데 정렬을 설정합니다. */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* 더미 박스의 배경 색상, 패딩, 테두리 둥근 모서리, 그림자 효과를 설정합니다. */
+  .dummy {
+    background-color: #F5F7FB;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* 더미 박스 안에 들어가는 div 태그에 대한 스타일을 지정합니다. */
+  .dummy > div {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #3A3F4A;
+  }
+  
+  
+  /* 추가 버튼에 대한 스타일을 지정합니다. */
+  button {
+    background-color: #1E90FF;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* 추가 버튼 호버 효과에 대한 스타일을 지정합니다. */
+  button:hover {
+    background-color: #1874CD;
+  }
+
+  input, select {
+    margin: 10px 0px 10px 0px;
+  }
+  
+  /* 검색 필드에 대한 스타일을 지정합니다. */
+  .search {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  /* 카테고리 버튼을 감싸는 div 요소에 대한 스타일을 지정합니다. */
+  .categories {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  /* 카테고리 버튼에 대한 스타일을 지정합니다. */
+  .categories .btn {
+    background-color: #1E90FF;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  /* 카테고리 버튼 호버 효과에 대한 스타일을 지정합니다. */
+  .categories .btn:hover {
+    background-color: #1874CD;
+  }
+  
+  .dummy-list-container {
+    margin-top: 20px;
+  }
+  
+  
+  .dummy-list > div {
+    background-color: #fff;
+    border: 1px solid #D7E2EB;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dummy-list img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .pagination {
+    background-color: #1E90FF;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .pagination:hover {
+    background-color: #1874CD;
+  }
